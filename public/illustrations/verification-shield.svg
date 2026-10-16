@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-53.36 64 1200 462" width="1200" height="462">
+  <defs>
+    <radialGradient id="g0" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(296.2 0 0 262.09 296.2 262.09)"><stop offset="0" stop-color="rgb(255 131 131 / .34)"/><stop offset=".53" stop-color="rgb(255 181 181 / .19)"/><stop offset="1" stop-color="rgb(255 238 238 / 0)"/></radialGradient>
+    <radialGradient id="g1" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(197.64 0 0 131.33 197.64 131.33)"><stop offset="0" stop-color="rgb(255 131 131 / .67)"/><stop offset=".53" stop-color="rgb(255 181 181 / .37)"/><stop offset="1" stop-color="rgb(255 238 238 / 0)"/></radialGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgb(255 204 204 / 0)"/><stop offset=".37" stop-color="rgb(255 195 195 / .18)"/><stop offset=".48" stop-color="rgb(255 244 244 / .58)"/><stop offset=".52" stop-color="rgb(255 255 255 / .6)"/><stop offset=".63" stop-color="rgb(255 195 195 / .18)"/><stop offset="1" stop-color="rgb(255 204 204 / 0)"/></linearGradient>
+    <radialGradient id="g4" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(50.71 0 0 14.95 50.71 14.95)"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="rgb(255 234 234 / .85)"/><stop offset="1" stop-color="rgb(255 204 204 / 0)"/></radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgb(255 255 255 / .4)"/><stop offset=".5" stop-color="rgb(255 232 223 / .25)"/><stop offset="1" stop-color="rgb(255 255 255 / .64)"/></linearGradient>
+    <linearGradient id="glass-warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgb(255 255 255 / .4)"/><stop offset=".5" stop-color="rgb(255 223 223 / .5)"/><stop offset="1" stop-color="rgb(255 255 255 / .64)"/></linearGradient>
+    <filter id="f-block" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="16.253" stdDeviation="9.752" flood-color="#cf7656" flood-opacity=".4"/></filter>
+    <linearGradient id="g12" x1="0" y1="0" x2=".75" y2="1"><stop offset="0" stop-color="#fff8f8"/><stop offset=".35" stop-color="#ffe9e9"/><stop offset="1" stop-color="#fababa"/></linearGradient>
+    <filter id="f-tile" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="3.251" stdDeviation="1.95" flood-color="#417aca" flood-opacity=".15"/></filter>
+    <linearGradient id="g14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe5e5"/><stop offset=".35" stop-color="#ffb8b8"/><stop offset=".57" stop-color="#f6a4a4"/><stop offset="1" stop-color="#ffd8d8"/></linearGradient>
+    <radialGradient id="g15" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(94.92 0 0 94.92 3.8 161.36)"><stop offset="0" stop-color="rgb(255 255 255 / .7)"/><stop offset="1" stop-color="rgb(255 255 255 / 0)"/></radialGradient>
+    <radialGradient id="g16" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(132.89 0 0 132.89 37.97 142.38)"><stop offset="0" stop-color="rgb(255 246 246 / .75)"/><stop offset="1" stop-color="rgb(255 244 244 / 0)"/></radialGradient>
+    <radialGradient id="g17" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(88.12 11.7 -11.7 88.12 171.96 35.76)"><stop offset="0" stop-color="rgb(241 104 104 / .38)"/><stop offset="1" stop-color="rgb(255 138 138 / 0)"/></radialGradient>
+    <filter id="f-shield" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="2.045" stdDeviation="5.604" flood-color="#fff" flood-opacity=".73"/></filter>
+    <linearGradient id="g19" x1=".5" y1="0" x2=".28" y2=".98"><stop offset="0" stop-color="#ff8a8a"/><stop offset=".55" stop-color="#f21a22"/><stop offset="1" stop-color="#c40008"/></linearGradient>
+    <linearGradient id="g20" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".45" stop-color="#fff" stop-opacity=".08"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="g21" x1="0" y1="0" x2="0" y2="1"><stop offset=".45" stop-color="#7a0008" stop-opacity="0"/><stop offset="1" stop-color="#7a0008" stop-opacity=".45"/></linearGradient>
+    <radialGradient id="g22" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(70 0 0 48 44 26)"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <filter id="f-shield-drop" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#9a0008" flood-opacity=".38"/></filter>
+    <filter id="f-check" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#8a0008" flood-opacity=".45"/></filter>
+    <path id="shield" d="M130.625 0H11.875C8.726 0 5.705 1.251 3.478 3.478 1.251 5.705 0 8.726 0 11.875V53.438C0 92.566 18.941 116.279 34.831 129.282 51.946 143.279 68.972 148.037 69.714 148.23 70.734 148.507 71.81 148.507 72.831 148.23 73.573 148.037 90.577 143.279 107.714 129.282 123.559 116.279 142.5 92.566 142.5 53.438V11.875C142.5 8.726 141.249 5.705 139.022 3.478 136.795 1.251 133.774 0 130.625 0Z"/>
+
+    <rect id="card-outer" width="182.038" height="172.286" rx="29.906"/>
+    <rect id="card-inner" width="158.633" height="159.284" rx="18.854"/>
+    <rect id="tile" width="189.84" height="189.84" rx="17.554"/>
+  </defs>
+
+  <!-- shield block -->
+  <g transform="translate(432.56 169.686)" filter="url(#f-block)">
+    <rect x=".649" y=".65" width="225.598" height="225.598" rx="34.457" fill="url(#g12)" stroke="#fff" stroke-width="1.3"/>
+    <rect x="13.652" y="13.653" width="199.592" height="199.592" rx="21.455" fill="#f69f9f" stroke="#ffe6e6" stroke-width=".65"/>
+    <g transform="translate(16.902 17.554)" filter="url(#f-tile)">
+      <rect x=".652" y=".65" width="191.14" height="191.14" rx="18.204" fill="url(#g14)" stroke="#fff5f1" stroke-width="1.3"/>
+      <use href="#tile" x="1.302" y="1.3" fill="url(#g15)"/>
+    </g>
+    <g transform="translate(18.203 18.854)">
+      <use href="#tile" fill="url(#g16)"/>
+      <use href="#tile" fill="url(#g17)"/>
+      <g transform="translate(23.788 27.142)">
+        <!-- soft red ground shadow, then the glowing rim -->
+        <use href="#shield" fill="#c40008" filter="url(#f-shield-drop)" opacity=".9"/>
+        <use href="#shield" fill="url(#g19)" stroke="#fff" stroke-width="2.6" filter="url(#f-shield)"/>
+        <!-- depth: darker toward the tip, gloss across the top, a specular hotspot -->
+        <use href="#shield" fill="url(#g21)"/>
+        <use href="#shield" fill="url(#g20)"/>
+        <use href="#shield" fill="url(#g22)"/>
+        <!-- inner rim -->
+        <use href="#shield" transform="translate(8.5 8.5) scale(.881)" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.6"/>
+      </g>
+      <g transform="translate(70.381 77.96)" filter="url(#f-check)">
+        <path d="M0 24.063 14.7 38.5 49 0" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+</svg>

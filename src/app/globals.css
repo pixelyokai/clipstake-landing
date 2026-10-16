@@ -1,0 +1,832 @@
+@import "tailwindcss";
+/* Bundled here so the page has a single render-blocking stylesheet. */
+@import "slot-text/style.css";
+@import "../components/how-it-works/illustrations.css";
+
+/* Tokens from the Paper file that Tailwind doesn't ship. Everything else
+   (neutral, red, stone…) is Tailwind's default palette, same values as Paper. */
+@theme {
+  --color-clipstake-red-25: #fae7e7;
+  --color-clipstake-red-50: #f5cfcf;
+  --color-clipstake-red-100: #f0b8b8;
+  --color-clipstake-red-200: #eba0a0;
+  --color-clipstake-red-300: #e27070;
+  --color-clipstake-red-400: #d84141;
+  --color-clipstake-red-500: #ce1111;
+  --color-clipstake-red-600: #a50e0e;
+  --color-clipstake-red-700: #7c0a0a;
+  --color-clipstake-red-800: #520707;
+  --color-clipstake-red-900: #3e0505;
+  --color-clipstake-red-950: #290303;
+  --color-clipstake-red-1000: #150202;
+
+  --color-sand-50: #faf9f7;
+  --color-sand-100: #f1efea;
+  --color-sand-200: #e3ded3;
+  --color-sand-300: #d1c9bb;
+  --color-sand-400: #b8ae9e;
+  --color-sand-500: #79716b;
+  --color-sand-600: #57534d;
+  --color-sand-700: #44403b;
+  --color-sand-800: #312c2b;
+  --color-sand-900: #24201e;
+  --color-sand-950: #14110f;
+
+  /* Paper's #303030 hairline, used for outlines and borders across the page */
+  --color-hairline: #30303033;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Motion tokens. Curves are Emil Kowalski's. Springs are sampled from real
+     spring physics by scripts/spring-easing.mjs, so CSS transitions and WAAPI
+     can overshoot without a JS animation library. Pair each spring with its
+     settle duration. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  /* Hover/colour changes: an even, unhurried curve so tints glide rather than snap. */
+  --ease-hover: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* spring { duration: 0.45, bounce: 0.2 }, settles in 657ms */
+  --ease-spring: linear(0, 0.0264, 0.0903, 0.1711, 0.2683, 0.363, 0.4615, 0.5488, 0.6286, 0.704, 0.7657, 0.8216, 0.8656, 0.904, 0.933, 0.9561, 0.9749, 0.9883, 0.9986, 1.0053, 1.01, 1.0126, 1.0139, 1.0142, 1.0138, 1.0128, 1.0117, 1.0104, 1.0089, 1.0076, 1.0063, 1.0052, 1.0041, 1.0033, 1.0025, 1.0019, 1.0014, 1.0009, 1.0006, 1.0003, 1);
+  --duration-spring: 657ms;
+
+  /* spring { duration: 0.45, bounce: 0.3 }, settles in 766ms */
+  --ease-spring-bouncy: linear(0, 0.036, 0.1175, 0.2254, 0.3517, 0.4724, 0.5865, 0.6893, 0.7782, 0.8524, 0.9148, 0.9603, 0.9939, 1.0174, 1.0325, 1.041, 1.0444, 1.044, 1.0411, 1.0367, 1.0315, 1.0261, 1.0208, 1.016, 1.0115, 1.0079, 1.005, 1.0027, 1.0009, 0.9997, 0.9988, 0.9983, 0.9981, 0.998, 0.9981, 0.9983, 0.9985, 0.9987, 0.999, 0.9992, 1);
+  --duration-spring-bouncy: 766ms;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    background: var(--color-neutral-50);
+    /* Anchor targets clear the floating navbar when Lenis is off. */
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    background: var(--color-neutral-50);
+    color: var(--color-neutral-900);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  dt,
+  dd,
+  li {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-clipstake-red-500);
+    outline-offset: 2px;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Section headings: Paper's neutral-700 → 900 text gradient with a 1px lift */
+@utility text-heading {
+  color: transparent;
+  /* background-clip: text clips descenders (g, p, y) hanging below the last
+     line box; the padding extends the painted box without changing layout. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  background-image: linear-gradient(
+    in oklab 180deg,
+    var(--color-neutral-700) 0%,
+    var(--color-neutral-900) 100%
+  );
+  background-clip: text;
+  filter: drop-shadow(#00000026 0 1px 1px);
+}
+
+@utility text-heading-light {
+  color: transparent;
+  /* background-clip: text clips descenders (g, p, y) hanging below the last
+     line box; the padding extends the painted box without changing layout. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  background-image: linear-gradient(
+    in oklab 180deg,
+    var(--color-neutral-50) 0%,
+    var(--color-neutral-100) 100%
+  );
+  background-clip: text;
+  filter: drop-shadow(#00000026 0 1px 1px);
+}
+
+/* Hero entrance. CSS keyframes on server-rendered text: readable without JS,
+   no layout shift, and it starts on first paint. Opacity starts at 0.01 so
+   the text still counts for LCP. Total stays under ~600ms. */
+@keyframes word-in {
+  from {
+    opacity: 0.01;
+    filter: blur(6px);
+    transform: translateY(0.3em);
+  }
+}
+
+@keyframes fade-blur-in {
+  from {
+    opacity: 0.01;
+    filter: blur(4px);
+    transform: translateY(4px);
+  }
+}
+
+.hero-word {
+  display: inline-block;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  color: transparent;
+  background-image: linear-gradient(
+    in oklab 180deg,
+    var(--color-neutral-700) 0%,
+    var(--color-neutral-900) 100%
+  );
+  background-clip: text;
+  animation: word-in 380ms var(--ease-out) both;
+  animation-delay: calc(var(--i) * 30ms);
+}
+
+.hero-fade {
+  animation: fade-blur-in 320ms var(--ease-out) both;
+  animation-delay: var(--delay, 160ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .hero-fade {
+    animation: none;
+  }
+}
+
+/* Logo carousel slot states. "waiting" snaps below with no transition so the
+   next roll always enters from the bottom. */
+.logo-slot {
+  translate: -50% -50%;
+  will-change: transform, opacity, filter;
+  transition:
+    transform 700ms var(--ease-in-out),
+    opacity 520ms var(--ease-in-out),
+    filter 520ms var(--ease-in-out);
+}
+/* No clipping on the slots, so logos blur as they leave and arrive. */
+.logo-slot[data-state="exiting"] {
+  transform: translateY(calc(-24px * var(--s)));
+  opacity: 0;
+  filter: blur(4px);
+}
+.logo-slot[data-state="waiting"] {
+  filter: blur(4px);
+  transform: translateY(calc(24px * var(--s)));
+  opacity: 0;
+  transition: none;
+}
+
+/* Dome fallback when WebGL isn't available: the poster atlas with a gentle 3D tilt. */
+@keyframes dome-sway {
+  from {
+    transform: perspective(900px) rotateX(20deg) rotateY(-4deg) scale(1.25);
+  }
+  to {
+    transform: perspective(900px) rotateX(20deg) rotateY(4deg) scale(1.25);
+  }
+}
+.dome-fallback {
+  background: url("/media/dome/atlas.webp") center / 640px auto repeat-x;
+  opacity: 0.35;
+  filter: saturate(0.55);
+  transform: perspective(900px) rotateX(20deg) scale(1.25);
+  animation: dome-sway 18s var(--ease-in-out) infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dome-fallback {
+    animation: none;
+  }
+}
+
+/* CPM globe behind the calculator card: radial mask so it fades into the red. */
+.cpm-globe {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(720px, 135vw);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  pointer-events: none;
+}
+/* Only the sphere is toned down and masked; the labels stay crisp. */
+.cpm-globe canvas {
+  mask-image: radial-gradient(closest-side, #000 60%, #0008 80%, transparent 100%);
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+}
+.cpm-globe[data-ready] canvas {
+  opacity: 0.32;
+}
+.globe-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% calc(-100% - 10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px 4px 6px;
+  border-radius: 99px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  color: #fff;
+  background: #ffffff24;
+  box-shadow: inset 0 0 0 1px #ffffff2e;
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity 320ms var(--ease-out),
+    filter 320ms var(--ease-out);
+  /* No will-change / 3D transform: the labels paint into one shared layer
+     instead of each being its own composited layer updated every frame. */
+}
+.globe-label[data-side="below"] {
+  translate: -50% 10px;
+}
+.globe-label[data-side="left"] {
+  translate: calc(-100% - 10px) -50%;
+}
+.globe-label[data-side="right"] {
+  translate: 10px -50%;
+}
+.globe-label[data-shown] {
+  opacity: 0.9;
+  filter: blur(0);
+}
+.globe-label img {
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+.globe-label b {
+  font-weight: 500;
+  color: #ffffffd9;
+}
+.globe-label i {
+  font-style: normal;
+  font-weight: 600;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Expanding arrow button, in Clipstake red. The tile is always
+   full width and clipped to a 40px square at rest; hover/focus unclips it
+   with the spring curve, so only clip-path, opacity and transforms animate. */
+.xa {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding-left: 48px;
+  padding-right: 16px;
+  border-radius: 14px;
+  overflow: clip;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(in oklab 180deg, var(--color-clipstake-red-400), var(--color-clipstake-red-600));
+  box-shadow:
+    #ffffff33 0 2px 0 inset,
+    #0000001a 0 -1px 0 inset,
+    #0000001a 0 1px 2px;
+  outline: 0.5px solid var(--color-hairline);
+  outline-offset: -0.5px;
+  transition: scale 160ms var(--ease-out);
+}
+.xa:active {
+  scale: 0.97;
+}
+.xa:focus-visible {
+  outline: 2px solid var(--color-clipstake-red-300);
+  outline-offset: 2px;
+}
+.xa-label {
+  transition:
+    opacity 180ms var(--ease-out),
+    translate 240ms var(--ease-out);
+}
+.xa-tile {
+  position: absolute;
+  inset: 4px;
+  z-index: -1;
+  border-radius: 10px;
+  background: linear-gradient(in oklab 180deg, #fff, var(--color-clipstake-red-25));
+  box-shadow: #0000001a 0 1px 2px;
+  color: var(--color-clipstake-red-600);
+  fill: currentColor;
+  clip-path: inset(0 calc(100% - 40px) 0 0 round 10px);
+  transition: clip-path 560ms var(--ease-spring);
+}
+.xa-rest {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  translate: 0 -50%;
+  transition: opacity 120ms var(--ease-out);
+}
+.xa-trail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.xa-trail-arrow {
+  opacity: 0;
+  translate: -6px 0;
+  transition:
+    opacity 120ms var(--ease-out),
+    translate 180ms var(--ease-out);
+}
+@media (hover: hover) {
+  .xa:hover .xa-tile {
+    clip-path: inset(0 0 0 0 round 10px);
+  }
+  .xa:hover .xa-label {
+    opacity: 0;
+    translate: 6px 0;
+  }
+  .xa:hover .xa-rest {
+    opacity: 0;
+  }
+  .xa:hover .xa-trail-arrow {
+    opacity: var(--o);
+    translate: 0 0;
+    transition:
+      opacity 180ms var(--ease-out) var(--d),
+      translate 220ms var(--ease-out) var(--d);
+  }
+}
+.xa:focus-visible .xa-tile {
+  clip-path: inset(0 0 0 0 round 10px);
+}
+.xa:focus-visible .xa-label {
+  opacity: 0;
+  translate: 6px 0;
+}
+.xa:focus-visible .xa-rest {
+  opacity: 0;
+}
+.xa:focus-visible .xa-trail-arrow {
+  opacity: var(--o);
+  translate: 0 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .xa,
+  .xa * {
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* Hamburger <-> cross: two HTML bars slide to the middle and rotate.
+   (HTML, not SVG paths: transform-box on SVG lines is unreliable.) */
+.burger-bar {
+  grid-area: 1 / 1;
+  width: 18px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 300ms var(--ease-out);
+}
+.burger-bar:first-child {
+  transform: translateY(-3.5px);
+}
+.burger-bar:last-child {
+  transform: translateY(3.5px);
+}
+.burger[data-open] .burger-bar:first-child {
+  transform: rotate(45deg);
+}
+.burger[data-open] .burger-bar:last-child {
+  transform: rotate(-45deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .burger-bar {
+    transition-duration: 0ms;
+  }
+}
+
+/* Campaign card flip. Each face turns on its own under the shared
+   perspective (no preserve-3d, which some ancestors flatten and then the back
+   shows mirrored through the front). Transforms only, so it's interruptible. */
+.flip-face {
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: transform var(--duration-spring) var(--ease-spring);
+}
+.flip-back {
+  transform: rotateY(-180deg);
+}
+[data-flipped] .flip-front {
+  transform: rotateY(180deg);
+}
+[data-flipped] .flip-back {
+  transform: rotateY(0deg);
+}
+.flip-link {
+  opacity: 0;
+  translate: 0 6px;
+  transition-duration: 120ms;
+}
+[data-flipped] > .flip-link {
+  opacity: 1;
+  translate: 0 0;
+  transition-duration: 200ms;
+  transition-delay: 220ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* No rotation: the faces crossfade instead. */
+  .flip-face,
+  [data-flipped] .flip-face {
+    transform: none;
+    transition: none;
+  }
+  .flip-back {
+    opacity: 0;
+    transition: opacity 200ms var(--ease-out);
+  }
+  [data-flipped] .flip-back {
+    opacity: 1;
+  }
+  .flip-link,
+  [data-flipped] > .flip-link {
+    translate: none;
+    transition-delay: 0ms;
+  }
+}
+
+/* Verification illustration. Shield block (from Paper): centre 49.9cqw x
+   47.3cqh, top edge 22.9cqh, bottom edge 71.7cqh, 18.8cqw wide. */
+.vx:not([data-playing]) * {
+  animation-play-state: paused !important;
+}
+.vx-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.vx-ascii {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s var(--ease-out);
+}
+.vx-ascii[data-ready] {
+  opacity: 1;
+}
+
+/* Carousel: a ring of clips on the inside of a cylinder, seen from just
+   behind its centre (geometry in verification-scene.tsx). Clips left of the
+   shield are unverified; past it they're verified or held as bots. */
+.vx-carousel {
+  position: absolute;
+  inset: 0;
+  perspective: 50cqw;
+  perspective-origin: 50% 47.3%;
+  mask-image: linear-gradient(90deg, transparent 2%, #000 16%, #000 84%, transparent 98%);
+}
+.vx-ring {
+  position: absolute;
+  left: 50%;
+  top: 47.3%;
+  transform-style: preserve-3d;
+}
+.vx-clip {
+  position: absolute;
+  left: -3.5cqw;
+  top: -6.22cqw;
+  width: 7cqw;
+  height: 12.44cqw;
+  border-radius: 0.6cqw;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background: #2b1d17;
+  box-shadow:
+    0 0 0 1px #ffffffb3,
+    0 0.6cqw 1.4cqw -0.5cqw #7c2c1d66;
+}
+.vx-thumb {
+  position: absolute;
+  inset: 0;
+  background: url("/media/verification-clips.webp") 0 0 / 500% 200% no-repeat;
+  filter: grayscale(0.9) brightness(0.85) contrast(0.9);
+}
+.vx-clip[data-after] .vx-thumb {
+  filter: none;
+}
+/* Legibility scrim behind the handle and view count. */
+.vx-clip::after {
+  content: "";
+  position: absolute;
+  inset: 55% 0 0;
+  background: linear-gradient(180deg, #0000, #000000b3);
+}
+.vx-play {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: 1;
+  width: 1.8cqw;
+  height: 1.8cqw;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: #ffffffd9;
+}
+.vx-play::after {
+  content: "";
+  position: absolute;
+  left: 56%;
+  top: 50%;
+  translate: -50% -50%;
+  border-left: 0.6cqw solid #2b1d17;
+  border-top: 0.38cqw solid transparent;
+  border-bottom: 0.38cqw solid transparent;
+}
+.vx-meta {
+  position: absolute;
+  inset-inline: 0.5cqw;
+  bottom: 0.5cqw;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1cqw;
+  font-size: 0.72cqw;
+  color: #ffffffd9;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.vx-meta b {
+  font-size: 0.92cqw;
+  font-weight: 600;
+  color: #fff;
+}
+.vx-tag {
+  position: absolute;
+  left: 0.5cqw;
+  top: 0.5cqw;
+  z-index: 1;
+  padding: 0.15cqw 0.4cqw;
+  border-radius: 99px;
+  font-size: 0.66cqw;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.vx-tag-pending {
+  color: #57534d;
+  background: #ffffffd9;
+}
+.vx-tag-ok {
+  color: #fff;
+  background: #0d7444;
+}
+.vx-tag-bot {
+  color: #fff;
+  background: var(--color-clipstake-red-600);
+}
+.vx-clip:not([data-after]) :is(.vx-tag-ok, .vx-tag-bot),
+.vx-clip[data-after] .vx-tag-pending {
+  display: none;
+}
+.vx-clip[data-bot][data-after] {
+  box-shadow:
+    0 0 0 2px var(--color-clipstake-red-500),
+    0 0.6cqw 1.4cqw -0.5cqw #a50e0e66;
+}
+.vx-clip[data-bot][data-after] :is(.vx-thumb, .vx-play, .vx-meta) {
+  opacity: 0.4;
+}
+
+/* Light cables canvas (created in verification-scene.tsx). */
+.vx-cables {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out);
+}
+.vx-cables[data-ready] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx * {
+    animation: none !important;
+  }
+}
+
+/* FAQ accordion. The row opens on grid rows (ease-out); the answer and icon
+   ride the bouncy spring for a small, single overshoot. */
+.faq-panel {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--ease-out);
+}
+[data-open] > .faq-panel {
+  grid-template-rows: 1fr;
+}
+.faq-answer {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+[data-open] .faq-answer {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 240ms var(--ease-out) 60ms,
+    transform var(--duration-spring-bouncy) var(--ease-spring-bouncy);
+}
+.faq-icon {
+  color: var(--color-neutral-400);
+  transition:
+    rotate var(--duration-spring-bouncy) var(--ease-spring-bouncy),
+    color 150ms var(--ease-out);
+}
+[data-open] .faq-icon {
+  rotate: 45deg;
+  color: var(--color-neutral-500);
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-panel,
+  .faq-answer,
+  [data-open] .faq-answer,
+  .faq-icon {
+    transition-duration: 0ms;
+  }
+}
+
+/* "How it works" step timer: the active divider fills linearly; pausing the
+   animation (hover, focus, off-screen) pauses the auto-advance with it. */
+/* The ported illustration root is 720x640; zoom it to the panel. */
+.steps-ill > [role="img"] {
+  zoom: var(--ill-scale, 0.75);
+}
+@keyframes step-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.step-progress {
+  animation: step-progress linear both;
+}
+.steps[data-paused] .step-progress {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .step-progress {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Shiki output in the API code block, with CSS line numbers. */
+.code-panel pre {
+  margin: 0;
+  padding: 16px 0;
+  background: transparent !important;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 22px;
+  counter-reset: line;
+}
+.code-panel code {
+  display: block;
+  min-width: max-content;
+}
+/* Token classes from src/lib/highlight.ts (index = tokenColors rule). */
+.code-panel code {
+  color: var(--color-sand-200);
+}
+.code-panel .t0 {
+  color: var(--color-sand-400);
+  font-style: italic;
+}
+.code-panel .t1 {
+  color: var(--color-clipstake-red-300);
+}
+.code-panel .t2 {
+  color: var(--color-clipstake-red-100);
+}
+.code-panel .t3 {
+  color: var(--color-clipstake-red-200);
+}
+.code-panel .t4 {
+  color: var(--color-sand-50);
+}
+.code-panel .t5 {
+  color: var(--color-sand-100);
+}
+.code-panel .t6 {
+  color: var(--color-sand-300);
+}
+.code-panel .line {
+  display: inline-block;
+  padding-right: 20px;
+}
+.code-panel .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 44px;
+  padding-right: 16px;
+  text-align: right;
+  color: var(--color-sand-500);
+  user-select: none;
+}
+
+/* Invisible native range thumb: sized so the drawn thumb follows the pointer 1:1. */
+.range-input::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 32px;
+}
+.range-input::-moz-range-thumb {
+  width: 16px;
+  height: 32px;
+  border: 0;
+}
+
+/* Stat values stay hidden only when JS is running and the counter hasn't
+   taken over yet. If hydration never happens they reveal after 3s. */
+@keyframes reveal {
+  to {
+    opacity: 1;
+  }
+}
+.js [data-stat]:not([data-ready]) {
+  opacity: 0;
+  animation: reveal 0s 3s forwards;
+}
+
+/* Footer reveal: the footer sticks to the viewport bottom behind <main>
+   (opaque, z-index 1), so the last section slides up off it. Same effect as a
+   fixed footer plus a measured margin, but pure CSS: no JS, no layout shift,
+   and a footer taller than the viewport still scrolls into view normally. */
+.site-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Below-the-fold sections skip layout and paint until they're near the
+   viewport, so their fonts and images don't compete with the hero. */
+@utility defer-render {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* Paper's soft card surface: hairline outline plus a hint of depth */
+@utility surface-card {
+  background: var(--color-white);
+  outline: 0.5px solid var(--color-hairline);
+  outline-offset: -0.5px;
+  box-shadow:
+    #16191d1f 0 -0.5px 0 inset,
+    #16191d0a 0 1px 2px -0.5px;
+}

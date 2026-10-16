@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Step 1 Illustration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.stage{animation:stageLoop 9s ease-in-out infinite both}
+.cover{animation:typed 9s steps(19) infinite both}
+.caret{animation:caret 9s steps(1) infinite both}
+.cpm1{animation:cpm1 9s steps(1) infinite both}
+.cpm2{animation:cpm2 9s steps(1) infinite both}
+.budget{animation:budget 9s steps(1) infinite both}
+.pline{animation:pline 9s cubic-bezier(.2,.8,.2,1) infinite both}
+.pubwrap{animation:pubwrap 9s cubic-bezier(.34,1.56,.64,1) infinite both}
+.publabel{animation:publabel 9s steps(1) infinite both}
+.donelabel{animation:donelabel 9s cubic-bezier(.34,1.56,.64,1) infinite both}
+.stepdone{animation:stepdone 9s steps(1) infinite both}
+.stepnext{animation:stepnext 9s steps(1) infinite both}
+@keyframes stageLoop{0%{opacity:0}3%{opacity:1}93%{opacity:1}100%{opacity:0}}
+@keyframes typed{0%,8%{transform:translateX(0)}30%,100%{transform:translateX(100%)}}
+@keyframes caret{0%,7%{opacity:0}8%,32%{opacity:1}33%,100%{opacity:0}}
+@keyframes cpm1{0%,38%{opacity:0}39%,100%{opacity:1}}
+@keyframes cpm2{0%,46%{opacity:0}47%,100%{opacity:1}}
+@keyframes budget{0%,54%{opacity:0}55%,100%{opacity:1}}
+@keyframes pline{0%,56%{opacity:0;transform:translateY(6px)}62%,100%{opacity:1;transform:none}}
+@keyframes pubwrap{0%,62%{opacity:0;transform:translateY(14px) scale(.96)}68%,100%{opacity:1;transform:none}}
+@keyframes publabel{0%,79%{opacity:1}80%,100%{opacity:0}}
+@keyframes donelabel{0%,79%{opacity:0;transform:scale(.8)}85%,100%{opacity:1;transform:none}}
+@keyframes stepdone{0%,79%{opacity:0}80%,100%{opacity:1}}
+@keyframes stepnext{0%,79%{opacity:1}80%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+.stage,.cover,.caret,.cpm1,.cpm2,.budget,.pline,.pubwrap,.publabel,.donelabel,.stepdone,.stepnext{animation:none}
+.cover{transform:translateX(100%)}.caret,.publabel,.stepnext{opacity:0}.stepdone,.donelabel{opacity:1}
+}
+</style>
+</head>
+<body>
+<div role="img" aria-label="Animated illustration: a brand fills in the Create campaign form, the preview card updates live, CPMs are set per platform, and the campaign goes live." style="--accent: #A50E0E; position: relative; width: 720px; height: 640px; overflow: hidden; background: #f9e6e6; font-family: 'Geist', system-ui, sans-serif; color: #1a1816">
+<div class="stage" style="position: absolute; inset: 0">
+
+<div style="position: absolute; left: 44px; top: 40px; width: 860px; height: 720px; background: #fcfbf9; border-radius: 16px; border: 1px solid #e9e4dc; box-shadow: 0 1px 0 #ffffff inset, 0 30px 60px -24px rgba(120,30,30,.35), 0 2px 6px rgba(120,30,30,.08)" aria-hidden="true">
+
+<div style="height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; border-bottom: 1px solid #ece8e1">
+<div style="display: flex; align-items: center; gap: 8px; width: 210px; height: 32px; box-sizing: border-box; padding: 0 10px; border-radius: 8px; background: #f1ede7; color: #8a8378; font-size: 13px">
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#8a8378" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4"/><path d="M9.2 9.2L12 12"/></svg>Search
+<span style="margin-left: auto; font-size: 11px; padding: 1px 5px; border-radius: 4px; border: 1px solid #ddd7ce; background: #fff">/</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; margin-right: 240px">
+<div style="display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid #e4dfd6; background: #fff; font-size: 13px; font-weight: 500">
+<span style="width: 16px; height: 16px; border-radius: 50%; background: #1a9c58; color: #fff; font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center">$</span>0.00 USD
+</div>
+<span style="width: 28px; height: 28px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #ff8d8d, #8d0a0a)"></span>
+</div>
+</div>
+
+<div style="padding: 22px 26px 0">
+<div style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 7px; border: 1px solid #e4dfd6; background: #fff; font-size: 12px; font-weight: 500; color: #4d4a44">
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#4d4a44" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2L3 6l4 4"/></svg>Back
+</div>
+<div style="margin-top: 16px; font-size: 24px; font-weight: 500; letter-spacing: -0.02em">Create campaign</div>
+
+<div style="margin-top: 12px; display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: #8a8378">
+<span style="position: relative; display: inline-flex; align-items: center; gap: 8px; color: #1a1816">
+<span class="stepnext" style="width: 20px; height: 20px; border-radius: 50%; background: #A50E0E; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center">1</span>
+<span class="stepdone" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: #e4a7a7; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span>
+Campaign Info.</span>
+<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#b5aea3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2l3 3-3 3"/></svg>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid #ddd7ce; background: #fff; font-size: 11px; display: flex; align-items: center; justify-content: center">2</span>Budget</span>
+<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#b5aea3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2l3 3-3 3"/></svg>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid #ddd7ce; background: #fff; font-size: 11px; display: flex; align-items: center; justify-content: center">3</span>Settings</span>
+</div>
+<div style="height: 1px; background: #ece8e1; margin-top: 18px"></div>
+
+<div style="display: flex; gap: 28px; margin-top: 22px">
+<div style="width: 372px; display: flex; flex-direction: column; gap: 18px">
+
+<div style="display: flex; flex-direction: column; gap: 7px">
+<div style="font-size: 13px; font-weight: 500">Campaign name</div>
+<div style="height: 42px; box-sizing: border-box; border: 1px solid #A50E0E; box-shadow: 0 0 0 3px rgba(165,14,14,.1); border-radius: 8px; background: #fff; display: flex; align-items: center; padding: 0 12px; font-size: 14px; white-space: nowrap; overflow: hidden">
+<span style="position: relative; display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom">Summer Launch Clips<span class="cover" style="position: absolute; inset: 0; background: #ffffff"><span class="caret" style="position: absolute; left: 0; top: 50%; width: 1.5px; height: 18px; margin-top: -9px; background: #1a1816"></span></span></span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 7px">
+<div style="font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 5px">Campaign type <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#9a9388" stroke-width="1.2"><circle cx="6" cy="6" r="5"/><path d="M6 5.5v3M6 3.8v.2" stroke-linecap="round"/></svg></div>
+<div style="height: 42px; box-sizing: border-box; border: 1px solid #e4dfd6; border-radius: 8px; background: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; font-size: 14px">Clipping
+<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#6d675e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 6px"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#1a1816" stroke-width="1.3"><rect x="1.5" y="3" width="11" height="8" rx="1.5"/><path d="M1.5 6h11"/></svg>Set CPM</div>
+<div style="display: flex; gap: 10px">
+<div style="flex: 1; box-sizing: border-box; padding: 10px; border: 1px solid #A50E0E; border-radius: 9px; background: #fff; display: flex; flex-direction: column; gap: 9px">
+<div style="display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500"><span style="width: 16px; height: 16px; border-radius: 5px; background: linear-gradient(45deg, #f9ce34, #ee2a7b 50%, #6228d7)"></span>Instagram<span style="margin-left: auto; width: 15px; height: 15px; border-radius: 4px; background: #A50E0E; display: flex; align-items: center; justify-content: center"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span></div>
+<div style="height: 34px; box-sizing: border-box; border: 1px solid #e4dfd6; border-radius: 7px; display: flex; align-items: center; font-size: 13px; overflow: hidden"><span style="width: 30px; height: 100%; display: flex; align-items: center; justify-content: center; color: #8a8378; border-right: 1px solid #e4dfd6; background: #f7f5f1">$</span><span class="cpm1" style="padding: 0 10px">2.50</span></div>
+</div>
+<div style="flex: 1; box-sizing: border-box; padding: 10px; border: 1px solid #A50E0E; border-radius: 9px; background: #fff; display: flex; flex-direction: column; gap: 9px">
+<div style="display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500"><span style="width: 16px; height: 16px; border-radius: 5px; background: #111; display: flex; align-items: center; justify-content: center"><svg width="9" height="10" viewBox="0 0 9 10" fill="#fff"><path d="M6.4 0h1.5c.1 1.2 1 2 2.1 2.2v1.6a3.6 3.6 0 0 1-2.1-.6v3.4A3.4 3.4 0 1 1 4.5 3.2v1.7a1.8 1.8 0 1 0 1.9 1.8V0z" transform="translate(-1)"/></svg></span>Tiktok<span style="margin-left: auto; width: 15px; height: 15px; border-radius: 4px; background: #A50E0E; display: flex; align-items: center; justify-content: center"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5"/></svg></span></div>
+<div style="height: 34px; box-sizing: border-box; border: 1px solid #e4dfd6; border-radius: 7px; display: flex; align-items: center; font-size: 13px; overflow: hidden"><span style="width: 30px; height: 100%; display: flex; align-items: center; justify-content: center; color: #8a8378; border-right: 1px solid #e4dfd6; background: #f7f5f1">$</span><span class="cpm2" style="padding: 0 10px">2.50</span></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 7px">
+<div style="font-size: 13px; font-weight: 500">Total budget</div>
+<div style="height: 42px; box-sizing: border-box; border: 1px solid #e4dfd6; border-radius: 8px; background: #fff; display: flex; align-items: center; font-size: 14px; overflow: hidden"><span style="width: 36px; height: 100%; display: flex; align-items: center; justify-content: center; color: #8a8378; border-right: 1px solid #e4dfd6; background: #f7f5f1">$</span><span class="budget" style="padding: 0 12px">10,000</span></div>
+</div>
+
+</div>
+
+<div style="width: 232px; box-sizing: border-box; padding: 10px; background: #fff; border: 1px solid #e9e4dc; border-radius: 12px; box-shadow: 0 10px 24px -14px rgba(120,30,30,.3); display: flex; flex-direction: column; gap: 10px; align-self: flex-start">
+<div style="height: 26px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #4d4a44; border: 1px dashed #ddd7ce; border-radius: 6px; background: repeating-linear-gradient(135deg, #f7f5f1 0 3px, #fff 3px 6px)">Northwind Coffee</div>
+<div style="height: 118px; border-radius: 8px; overflow: hidden; position: relative; background: linear-gradient(135deg, #2b1d17 0%, #7c2c1d 100%)">
+<svg width="212" height="118" viewBox="0 0 212 118" fill="none" style="position: absolute; inset: 0">
+<circle cx="176" cy="22" r="46" fill="#ffffff" opacity=".06"/>
+<circle cx="196" cy="108" r="34" fill="#ffffff" opacity=".07"/>
+<circle cx="106" cy="52" r="19" fill="#ffffff" opacity=".95"/>
+<path d="M101 43l16 9-16 9z" fill="#2b1d17"/>
+<rect x="14" y="88" width="84" height="6" rx="3" fill="#ffffff" opacity=".35"/>
+<rect x="14" y="100" width="52" height="6" rx="3" fill="#ffffff" opacity=".2"/>
+</svg>
+</div>
+<div style="height: 18px; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden"><span style="position: relative; display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom">Summer Launch Clips<span class="cover" style="position: absolute; inset: 0; background: #ffffff"></span></span></div>
+<div style="display: flex; gap: 5px; flex-wrap: wrap">
+<span style="font-size: 11px; font-weight: 500; padding: 3px 7px; border-radius: 5px; background: #e6f1fb; color: #1d5fa3">Clipping</span>
+<span style="font-size: 11px; font-weight: 500; padding: 3px 7px; border-radius: 5px; background: #e6f4ec; color: #0d7444">Ends in 14d</span>
+<span style="font-size: 11px; font-weight: 500; padding: 3px 7px; border-radius: 5px; background: #f1ede7; color: #4d4a44">Food &amp; drink</span>
+</div>
+<div class="pline" style="display: flex; gap: 8px; border-top: 1px solid #ece8e1; padding-top: 10px; font-size: 11px; color: #4d4a44">
+<span style="flex: 1; border-left: 2px solid #1a9c8a; padding-left: 6px; line-height: 1.3">Total budget<br><b style="color: #1a1816; font-size: 12px">$10,000</b></span>
+<span style="flex: 1; border-left: 2px solid #9bc53d; padding-left: 6px; line-height: 1.3">Per 1,000 views<br><b style="color: #1a1816; font-size: 12px">$2.50</b></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="pubwrap" style="position: absolute; left: 448px; top: 584px" aria-hidden="true">
+<div style="position: relative; width: 190px; height: 46px; border-radius: 10px; background: #A50E0E; box-shadow: 0 14px 26px -10px rgba(120,10,10,.55), 0 1px 0 rgba(255,255,255,.25) inset">
+<span class="publabel" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 15px; font-weight: 500">Publish campaign</span>
+<span class="donelabel" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 8px; color: #ffffff; font-size: 15px; font-weight: 500"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5l3.5 3.5L14 6"/></svg>Campaign live</span>
+</div>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

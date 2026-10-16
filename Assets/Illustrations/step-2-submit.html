@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Step 2 Illustration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+@property --n1{syntax:'<integer>';initial-value:0;inherits:false}
+@property --n2{syntax:'<integer>';initial-value:0;inherits:false}
+@property --n3{syntax:'<integer>';initial-value:0;inherits:false}
+@property --n4{syntax:'<integer>';initial-value:0;inherits:false}
+@property --n5{syntax:'<integer>';initial-value:0;inherits:false}
+.stage{animation:stageLoop 9s ease-in-out infinite both}
+.row1{animation:row1 9s cubic-bezier(.2,.8,.2,1) infinite both}
+.row2{animation:row2 9s cubic-bezier(.2,.8,.2,1) infinite both}
+.row3{animation:row3 9s cubic-bezier(.2,.8,.2,1) infinite both}
+.v1{counter-reset:v var(--n1)}
+.v1{animation:count1 9s ease-out infinite both}
+.v2{counter-reset:v var(--n2)}
+.v2{animation:count2 9s ease-out infinite both}
+.v3{counter-reset:v var(--n3)}
+.v3{animation:count3 9s ease-out infinite both}
+.t1{counter-reset:v var(--n4)}
+.t1{animation:count4 9s ease-out infinite both}
+.t2{counter-reset:v var(--n5)}
+.t2{animation:count5 9s ease-out infinite both}
+.v1::before,.v2::before,.v3::before{content:counter(v) "K"}
+.t1::before,.t2::before{content:counter(v)}
+.pend1{animation:pend1 9s steps(1) infinite both}
+.appr1{animation:appr1 9s cubic-bezier(.34,1.56,.64,1) infinite both}
+.toast{animation:toast 9s cubic-bezier(.2,.8,.2,1) infinite both}
+.tick{animation:tick 9s cubic-bezier(.34,1.56,.64,1) infinite both}
+@keyframes stageLoop{0%{opacity:0}3%{opacity:1}93%{opacity:1}100%{opacity:0}}
+@keyframes row1{0%,6%{opacity:0;transform:translateY(16px)}16%,100%{opacity:1;transform:none}}
+@keyframes row2{0%,18%{opacity:0;transform:translateY(16px)}28%,100%{opacity:1;transform:none}}
+@keyframes row3{0%,30%{opacity:0;transform:translateY(16px)}40%,100%{opacity:1;transform:none}}
+@keyframes count1{0%,14%{--n1:0}50%,100%{--n1:48}}
+@keyframes count2{0%,26%{--n2:0}58%,100%{--n2:31}}
+@keyframes count3{0%,38%{--n3:0}64%,100%{--n3:12}}
+@keyframes count4{0%,8%{--n4:47}42%,100%{--n4:50}}
+@keyframes count5{0%,8%{--n5:31}70%,100%{--n5:32}}
+@keyframes pend1{0%,65%{opacity:1}66%,100%{opacity:0}}
+@keyframes appr1{0%,65%{opacity:0;transform:scale(.7)}71%,100%{opacity:1;transform:none}}
+@keyframes toast{0%,4%{opacity:0;transform:translateX(24px)}10%,44%{opacity:1;transform:none}50%,100%{opacity:0;transform:translateX(24px)}}
+@keyframes tick{0%,64%{opacity:0;transform:scale(.6)}70%,100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+.stage,.row1,.row2,.row3,.v1,.v2,.v3,.t1,.t2,.pend1,.appr1,.toast,.tick{animation:none}
+.v1{--n1:48}.v2{--n2:31}.v3{--n3:12}.t1{--n4:50}.t2{--n5:32}.pend1,.toast{opacity:0}
+}
+</style>
+</head>
+<body>
+<div role="img" aria-label="Animated illustration: clip submissions arrive in the campaign's submissions table one after another, their view counts tick up, and the first one is approved." style="--accent: #A50E0E; position: relative; width: 720px; height: 640px; overflow: hidden; background: #f9e6e6; font-family: 'Geist', system-ui, sans-serif; color: #1a1816">
+<div class="stage" style="position: absolute; inset: 0">
+
+<div style="position: absolute; left: 44px; top: 40px; width: 860px; height: 720px; background: #fcfbf9; border-radius: 16px; border: 1px solid #e9e4dc; box-shadow: 0 1px 0 #ffffff inset, 0 30px 60px -24px rgba(120,30,30,.35), 0 2px 6px rgba(120,30,30,.08)" aria-hidden="true">
+
+<div style="height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; border-bottom: 1px solid #ece8e1">
+<div style="display: flex; align-items: center; gap: 8px; width: 210px; height: 32px; box-sizing: border-box; padding: 0 10px; border-radius: 8px; background: #f1ede7; color: #8a8378; font-size: 13px">
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#8a8378" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4"/><path d="M9.2 9.2L12 12"/></svg>Search
+<span style="margin-left: auto; font-size: 11px; padding: 1px 5px; border-radius: 4px; border: 1px solid #ddd7ce; background: #fff">/</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; margin-right: 240px">
+<div style="display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid #e4dfd6; background: #fff; font-size: 13px; font-weight: 500">
+<span style="width: 16px; height: 16px; border-radius: 50%; background: #1a9c58; color: #fff; font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center">$</span>0.00 USD
+</div>
+<span style="width: 28px; height: 28px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #ff8d8d, #8d0a0a)"></span>
+</div>
+</div>
+
+<div style="padding: 22px 26px 0; width: 632px">
+<div style="display: flex; align-items: center; gap: 10px">
+<div style="font-size: 20px; font-weight: 500; letter-spacing: -0.02em">Summer Launch Clips</div>
+<span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 5px; background: #e6f4ec; color: #0d7444"><span style="width: 6px; height: 6px; border-radius: 50%; background: #1a9c58"></span>Active</span>
+<span style="font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 5px; background: #e6f1fb; color: #1d5fa3">Clipping</span>
+</div>
+
+<div style="margin-top: 14px; display: inline-flex; padding: 3px; border-radius: 8px; background: #f1ede7; font-size: 13px; font-weight: 500; color: #6d675e">
+<span style="padding: 5px 12px; border-radius: 6px; background: #fff; color: #1a1816; box-shadow: 0 1px 2px rgba(0,0,0,.08)">Submissions</span>
+<span style="padding: 5px 12px">Analytics</span><span style="padding: 5px 12px">Creators</span><span style="padding: 5px 12px">Transactions</span>
+</div>
+
+<div style="margin-top: 16px; display: flex; gap: 10px">
+<div style="flex: 1; box-sizing: border-box; padding: 12px 14px; border-radius: 10px; border: 1px solid #e9e4dc; background: linear-gradient(180deg, #fbe9e9, #fff 60%)">
+<div style="font-size: 13px; color: #4d4a44; display: flex; align-items: center; gap: 6px"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#A50E0E" stroke-width="1.4"><rect x="1.5" y="2.5" width="11" height="9" rx="2"/><path d="M6 5.5l3 1.5-3 1.5z" fill="#A50E0E" stroke="none"/></svg>Total</div>
+<div style="margin-top: 8px; display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 600"><span class="t1"></span><span style="font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 5px; background: #e2f3f0; color: #0f766e">64% Approval</span></div>
+</div>
+<div style="flex: 1; box-sizing: border-box; padding: 12px 14px; border-radius: 10px; border: 1px solid #e9e4dc; background: linear-gradient(180deg, #e6f4ec, #fff 60%)">
+<div style="font-size: 13px; color: #4d4a44; display: flex; align-items: center; gap: 6px"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#0d7444" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg>Approved</div>
+<div style="margin-top: 8px; font-size: 20px; font-weight: 600"><span class="t2"></span></div>
+</div>
+<div style="flex: 1; box-sizing: border-box; padding: 12px 14px; border-radius: 10px; border: 1px solid #e9e4dc; background: linear-gradient(180deg, #fff1e6, #fff 60%)">
+<div style="font-size: 13px; color: #4d4a44; display: flex; align-items: center; gap: 6px"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#c2410c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2h7M3.5 12h7M4 2c0 4 6 4 6 10M10 2c0 4-6 4-6 10"/></svg>Pending</div>
+<div style="margin-top: 8px; font-size: 20px; font-weight: 600">3</div>
+</div>
+</div>
+
+<div style="margin-top: 18px; display: flex; align-items: center; justify-content: space-between">
+<div style="font-size: 16px; font-weight: 500">Submissions</div>
+<div style="display: flex; align-items: center; gap: 8px; width: 170px; height: 30px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; border: 1px solid #e4dfd6; background: #fff; color: #8a8378; font-size: 12px"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#8a8378" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4"/><path d="M9.2 9.2L12 12"/></svg>Search</div>
+</div>
+
+<div style="margin-top: 10px; border: 1px solid #e9e4dc; border-radius: 10px; background: #fff; overflow: hidden">
+<div style="display: grid; grid-template-columns: 96px 1fr 70px 110px 80px; align-items: center; gap: 12px; height: 36px; padding: 0 14px; font-size: 12px; color: #6d675e; background: #faf8f5; border-bottom: 1px solid #ece8e1"><span>Platform</span><span>Creator</span><span>Views</span><span>Status</span><span style="text-align: right">Earnings</span></div>
+
+<div class="row1" style="display: grid; grid-template-columns: 96px 1fr 70px 110px 80px; align-items: center; gap: 12px; height: 62px; padding: 0 14px; border-bottom: 1px solid #ece8e1">
+<span style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 6px; background: #f1ede7; font-size: 12px; font-weight: 500; width: fit-content"><span style="width: 14px; height: 10px; border-radius: 3px; background: #e52d27; display: flex; align-items: center; justify-content: center"><span style="border-left: 4px solid #fff; border-top: 2.5px solid transparent; border-bottom: 2.5px solid transparent; margin-left: 1px"></span></span>Watch</span>
+<span style="display: flex; align-items: center; gap: 9px; min-width: 0"><span style="width: 28px; height: 28px; border-radius: 50%; flex: none; background: radial-gradient(circle at 30% 30%, #ffb3b3, #c91f1f)"></span><span style="display: flex; flex-direction: column; gap: 2px; min-width: 0"><span style="font-size: 13px; font-weight: 500">ana.clips</span><span style="font-size: 11px; color: #8a8378; white-space: nowrap">@ana.clips &nbsp;•&nbsp; 2 Feb '25</span></span></span>
+<span class="v1" style="font-size: 13px; font-weight: 500"></span>
+<span style="position: relative; height: 24px"><span class="pend1" style="position: absolute; left: 0; top: 0; display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 8px; border-radius: 5px; background: #fff1e6; color: #c2410c; font-size: 12px; font-weight: 500"><svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#c2410c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2h7M3.5 12h7M4 2c0 4 6 4 6 10M10 2c0 4-6 4-6 10"/></svg>Pending</span><span class="appr1" style="position: absolute; left: 0; top: 0; display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 8px; border-radius: 5px; background: #e6f4ec; color: #0d7444; font-size: 12px; font-weight: 500"><svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#0d7444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg>Approved</span></span>
+<span style="display: flex; justify-content: flex-end; gap: 5px"><span class="tick" style="width: 24px; height: 24px; border-radius: 6px; background: #1a9c8a; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg></span><span style="width: 24px; height: 24px; border-radius: 6px; border: 1px solid #f0b4b4; display: flex; align-items: center; justify-content: center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#c91f1f" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l6 6M8 2l-6 6"/></svg></span></span>
+</div>
+
+<div class="row2" style="display: grid; grid-template-columns: 96px 1fr 70px 110px 80px; align-items: center; gap: 12px; height: 62px; padding: 0 14px; border-bottom: 1px solid #ece8e1">
+<span style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 6px; background: #f1ede7; font-size: 12px; font-weight: 500; width: fit-content"><span style="width: 14px; height: 14px; border-radius: 4px; background: linear-gradient(45deg, #f9ce34, #ee2a7b 50%, #6228d7)"></span>Watch</span>
+<span style="display: flex; align-items: center; gap: 9px; min-width: 0"><span style="width: 28px; height: 28px; border-radius: 50%; flex: none; background: radial-gradient(circle at 30% 30%, #ffd9a8, #b4541b)"></span><span style="display: flex; flex-direction: column; gap: 2px; min-width: 0"><span style="font-size: 13px; font-weight: 500">devonmakes</span><span style="font-size: 11px; color: #8a8378; white-space: nowrap">@devonmakes &nbsp;•&nbsp; 2 Feb '25</span></span></span>
+<span class="v2" style="font-size: 13px; font-weight: 500"></span>
+<span><span style="display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 8px; border-radius: 5px; background: #fff1e6; color: #c2410c; font-size: 12px; font-weight: 500"><svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#c2410c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2h7M3.5 12h7M4 2c0 4 6 4 6 10M10 2c0 4-6 4-6 10"/></svg>Pending</span></span>
+<span style="text-align: right; font-size: 13px; color: #8a8378">$0.00</span>
+</div>
+
+<div class="row3" style="display: grid; grid-template-columns: 96px 1fr 70px 110px 80px; align-items: center; gap: 12px; height: 62px; padding: 0 14px">
+<span style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 6px; background: #f1ede7; font-size: 12px; font-weight: 500; width: fit-content"><span style="width: 14px; height: 14px; border-radius: 4px; background: #111; display: flex; align-items: center; justify-content: center"><svg width="8" height="9" viewBox="0 0 9 10" fill="#fff"><path d="M6.4 0h1.5c.1 1.2 1 2 2.1 2.2v1.6a3.6 3.6 0 0 1-2.1-.6v3.4A3.4 3.4 0 1 1 4.5 3.2v1.7a1.8 1.8 0 1 0 1.9 1.8V0z" transform="translate(-1)"/></svg></span>Watch</span>
+<span style="display: flex; align-items: center; gap: 9px; min-width: 0"><span style="width: 28px; height: 28px; border-radius: 50%; flex: none; background: radial-gradient(circle at 30% 30%, #c9d8ff, #2f4fb0)"></span><span style="display: flex; flex-direction: column; gap: 2px; min-width: 0"><span style="font-size: 13px; font-weight: 500">milo.cuts</span><span style="font-size: 11px; color: #8a8378; white-space: nowrap">@milo.cuts &nbsp;•&nbsp; 3 Feb '25</span></span></span>
+<span class="v3" style="font-size: 13px; font-weight: 500"></span>
+<span><span style="display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 8px; border-radius: 5px; background: #fff1e6; color: #c2410c; font-size: 12px; font-weight: 500"><svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#c2410c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2h7M3.5 12h7M4 2c0 4 6 4 6 10M10 2c0 4-6 4-6 10"/></svg>Pending</span></span>
+<span style="text-align: right; font-size: 13px; color: #8a8378">$0.00</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="toast" style="position: absolute; right: 24px; top: 108px; display: flex; align-items: center; gap: 10px; padding: 10px 14px 10px 10px; border-radius: 10px; background: #fff; border: 1px solid #e9e4dc; box-shadow: 0 16px 30px -12px rgba(120,30,30,.35); font-size: 13px" aria-hidden="true">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #fdeceb; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#A50E0E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v7M4 6l3 3 3-3M2.5 11.5h9"/></svg></span>
+<span><b style="font-weight: 600">New submission</b><br><span style="color: #6d675e; font-size: 12px">ana.clips submitted a clip</span></span>
+</div>
+
+</div>
+</div>
+</body>
+</html>

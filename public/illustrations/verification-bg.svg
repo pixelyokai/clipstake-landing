@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-53.36 64 1200 462" width="1200" height="462">
+  <defs>
+    <radialGradient id="g0" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(296.2 0 0 262.09 296.2 262.09)"><stop offset="0" stop-color="rgb(255 131 131 / .34)"/><stop offset=".53" stop-color="rgb(255 181 181 / .19)"/><stop offset="1" stop-color="rgb(255 238 238 / 0)"/></radialGradient>
+    <radialGradient id="g1" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(197.64 0 0 131.33 197.64 131.33)"><stop offset="0" stop-color="rgb(255 131 131 / .67)"/><stop offset=".53" stop-color="rgb(255 181 181 / .37)"/><stop offset="1" stop-color="rgb(255 238 238 / 0)"/></radialGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgb(255 204 204 / 0)"/><stop offset=".37" stop-color="rgb(255 195 195 / .18)"/><stop offset=".48" stop-color="rgb(255 244 244 / .58)"/><stop offset=".52" stop-color="rgb(255 255 255 / .6)"/><stop offset=".63" stop-color="rgb(255 195 195 / .18)"/><stop offset="1" stop-color="rgb(255 204 204 / 0)"/></linearGradient>
+    <radialGradient id="g4" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(50.71 0 0 14.95 50.71 14.95)"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="rgb(255 234 234 / .85)"/><stop offset="1" stop-color="rgb(255 204 204 / 0)"/></radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgb(255 255 255 / .4)"/><stop offset=".5" stop-color="rgb(255 232 223 / .25)"/><stop offset="1" stop-color="rgb(255 255 255 / .64)"/></linearGradient>
+    <linearGradient id="glass-warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgb(255 255 255 / .4)"/><stop offset=".5" stop-color="rgb(255 223 223 / .5)"/><stop offset="1" stop-color="rgb(255 255 255 / .64)"/></linearGradient>
+    <filter id="f-block" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="16.253" stdDeviation="9.752" flood-color="#cf7656" flood-opacity=".4"/></filter>
+    <linearGradient id="g12" x1="0" y1="0" x2=".75" y2="1"><stop offset="0" stop-color="#fff8f8"/><stop offset=".35" stop-color="#ffe9e9"/><stop offset="1" stop-color="#fababa"/></linearGradient>
+    <filter id="f-tile" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="3.251" stdDeviation="1.95" flood-color="#417aca" flood-opacity=".15"/></filter>
+    <linearGradient id="g14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe5e5"/><stop offset=".35" stop-color="#ffb8b8"/><stop offset=".57" stop-color="#f6a4a4"/><stop offset="1" stop-color="#ffd8d8"/></linearGradient>
+    <radialGradient id="g15" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(94.92 0 0 94.92 3.8 161.36)"><stop offset="0" stop-color="rgb(255 255 255 / .7)"/><stop offset="1" stop-color="rgb(255 255 255 / 0)"/></radialGradient>
+    <radialGradient id="g16" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(132.89 0 0 132.89 37.97 142.38)"><stop offset="0" stop-color="rgb(255 246 246 / .75)"/><stop offset="1" stop-color="rgb(255 244 244 / 0)"/></radialGradient>
+    <radialGradient id="g17" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1" gradientTransform="matrix(88.12 11.7 -11.7 88.12 171.96 35.76)"><stop offset="0" stop-color="rgb(241 104 104 / .38)"/><stop offset="1" stop-color="rgb(255 138 138 / 0)"/></radialGradient>
+    <filter id="f-shield" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="2.045" stdDeviation="5.604" flood-color="#fff" flood-opacity=".73"/></filter>
+    <linearGradient id="g19" x1=".5" y1="0" x2=".28" y2=".98"><stop offset="0" stop-color="#ff7c7c"/><stop offset="1" stop-color="#e7000b"/></linearGradient>
+
+    <rect id="card-outer" width="182.038" height="172.286" rx="29.906"/>
+    <rect id="card-inner" width="158.633" height="159.284" rx="18.854"/>
+    <rect id="tile" width="189.84" height="189.84" rx="17.554"/>
+  </defs>
+
+  <!-- glow -->
+  <g transform="translate(47.028 0)">
+    <path transform="translate(191.182 6.283)" d="M592.399 262.092C592.399 406.841 459.786 524.183 296.199 524.183 132.613 524.183 0 406.841 0 262.092 0 117.342 132.613 0 296.199 0 459.786 0 592.399 117.342 592.399 262.092Z" fill="url(#g0)"/>
+    <path transform="translate(301.261 270.981)" d="M395.283 131.328C395.283 203.858 306.796 262.655 197.642 262.655 88.487 262.655 0 203.858 0 131.328 0 58.797 88.487 0 197.642 0 306.796 0 395.283 58.797 395.283 131.328Z" fill="url(#g1)" opacity=".6"/>
+  </g>
+
+  <!-- side blocks -->
+  <g transform="matrix(.961 -.276 .276 .961 0 304.288)" opacity=".35">
+    <use href="#card-outer" x=".65" y=".65" fill="url(#glass)" stroke="#fff" stroke-width="1.3"/>
+    <use href="#card-inner" x="12.353" y="13.003" fill="url(#glass)" stroke="#fff" stroke-width="1.3"/>
+  </g>
+  <g transform="matrix(.99 .139 -.139 .99 723.791 198.731)" opacity=".7">
+    <use href="#card-outer" x=".648" y=".65" fill="url(#glass)" stroke="rgb(254 231 231 / .8)" stroke-width="1.3"/>
+    <use href="#card-inner" x="12.351" y="13.003" fill="url(#glass-warm)" stroke="rgb(254 231 231 / .75)" stroke-width="1.3"/>
+  </g>
+  <g transform="matrix(.961 .276 -.276 .961 916.648 253.553)" opacity=".35">
+    <use href="#card-outer" x=".651" y=".65" fill="url(#glass)" stroke="rgb(255 255 255 / .8)" stroke-width="1.3"/>
+    <use href="#card-inner" x="12.354" y="13.002" fill="url(#glass)" stroke="rgb(255 255 255 / .75)" stroke-width="1.3"/>
+  </g>
+  <g transform="matrix(.99 -.139 .139 .99 192.524 228.148)" opacity=".7">
+    <use href="#card-outer" x=".649" y=".65" fill="url(#glass)" stroke="#ffe6e6" stroke-width="1.3"/>
+    <use href="#card-inner" x="12.353" y="13.003" fill="url(#glass-warm)" stroke="#fee7e7" stroke-width="1.3"/>
+  </g>
+
+</svg>
