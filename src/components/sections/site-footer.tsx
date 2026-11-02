@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { FooterAscii } from "@/components/footer/footer-ascii";
+import { SmartLink } from "@/components/ui/smart-link";
 import { FOOTER_COLUMNS } from "@/content/site";
 
 const SOCIALS = [
@@ -30,11 +32,11 @@ export function SiteFooter() {
       {/* ASCII field with the 3D wordmark; the field fades out before the links. */}
       <FooterAscii />
       <div className="relative mx-auto flex w-full max-w-[1280px] flex-col px-4 pt-16 md:px-10 md:pt-20">
-        <div className="flex flex-col gap-10 pb-10 md:flex-row md:gap-6 md:px-10">
+        <div className="flex flex-col gap-10 pb-10 md:flex-row md:gap-6">
           <div className="flex shrink-0 flex-col justify-between gap-6 md:w-[320px]">
-            <a href="#" aria-label="Clipstake home" className="w-fit rounded-sm">
+            <Link href="/" aria-label="Clipstake home" className="w-fit rounded-sm">
               <img loading="lazy" decoding="async" src="/brand/logo-footer.webp" alt="" width={160} height={34} />
-            </a>
+            </Link>
             <ul className="flex items-center gap-2">
               {SOCIALS.map((social) => (
                 <li key={social.label}>
@@ -58,13 +60,13 @@ export function SiteFooter() {
                 <h2 className="font-medium text-neutral-50">{column.title}</h2>
                 <ul className="flex flex-col gap-3">
                   {column.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                    <li key={link.label}>
+                      <SmartLink
+                        href={link.href}
                         className="rounded-sm text-neutral-300 transition-colors duration-[240ms] ease-(--ease-hover) hover:text-white"
                       >
-                        {link}
-                      </a>
+                        {link.label}
+                      </SmartLink>
                     </li>
                   ))}
                 </ul>
@@ -73,7 +75,7 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="flex flex-col gap-3 py-6 text-sm sm:flex-row sm:items-center sm:justify-between md:px-10">
+        <div className="flex flex-col gap-3 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[13px] leading-5 text-white/60">All Rights Reserved © 2026</p>
           <ul className="flex gap-4">
             {["Privacy Policy", "Terms of service"].map((label) => (

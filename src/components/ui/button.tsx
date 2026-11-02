@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react";
 import { Icon } from "@/components/ui/icon";
+import { SmartLink } from "@/components/ui/smart-link";
 
 type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md";
@@ -55,13 +56,13 @@ export function ButtonLink({
   ...props
 }: ButtonLinkProps) {
   return (
-    <a
+    <SmartLink
       href={href}
       className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
       {...props}
     >
       <span className="relative px-0.5">{children}</span>
       {arrow && <Arrow />}
-    </a>
+    </SmartLink>
   );
 }

@@ -31,6 +31,16 @@ export const DeferredCpmGlobe = lazyHydrate(
 export const DeferredCalculatorRays = lazyHydrate(() =>
   import("@/components/calculator/calculator-rays").then((m) => m.CalculatorRays),
 );
+export const DeferredEarningsCalculator = lazyHydrate(() =>
+  import("@/components/calculator/earnings-calculator").then((m) => m.EarningsCalculator),
+);
 export const DeferredFaqAccordion = lazyHydrate(() =>
   import("@/components/faq/accordion").then((m) => m.FaqAccordion),
 );
+export const DeferredBotsArc = lazyHydrate(() =>
+  import("@/components/pages/bots-arc").then((m) => m.BotsArc),
+);
+export const DeferredGhostFibers = lazyHydrate(() =>
+  import("@/components/hero/ghost-fibers-layer").then((m) => m.GhostFibersLayer),
+);
+export const DeferredPrism = lazyHydrate(() => import("@/components/cta/prism-layer").then((m) => m.PrismLayer));

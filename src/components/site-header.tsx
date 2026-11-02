@@ -1,10 +1,17 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ButtonLink } from "@/components/ui/button";
+import { SmartLink } from "@/components/ui/smart-link";
+import { NAV_LINKS } from "@/content/site";
 import { subscribeScroll } from "@/lib/scroll";
 
-const LINKS = ["Brand", "Creator", "Marketplace", "Contact"];
+// The current section: /case-studies/jackbit still marks "Customers".
+function isActive(pathname: string, href: string) {
+  return href !== "#" && (pathname === href || pathname.startsWith(`${href}/`));
+}
 
 // Hysteresis: become the pill past 80px, go back only under 40px.
 const COMPACT_AT = 80;
@@ -32,6 +39,7 @@ export function SiteHeader() {
   const navRef = useRef<HTMLElement>(null);
   const compactRef = useRef(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const frame = frameRef.current!;
@@ -115,7 +123,7 @@ export function SiteHeader() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-center px-4 md:px-10">
       <div
         ref={frameRef}
-        className="pointer-events-auto relative w-full max-w-[1110px]"
+        className="pointer-events-auto relative w-full max-w-[1200px]"
       >
         {/* Pill surface. drop-shadow sits on the wrapper so it follows the clip. */}
         <div
@@ -134,16 +142,16 @@ export function SiteHeader() {
           aria-label="Main"
           className="group/nav relative flex items-center justify-between gap-3 p-2.5 data-compact:mx-auto md:pl-3 md:data-compact:w-fit"
         >
-          <a
-            href="#"
+          <Link
+            href="/"
             data-morph
             aria-label="Clipstake home"
             className="shrink-0 rounded-sm"
           >
             <img src="/brand/logo.webp" alt="" width={115} height={24} />
-          </a>
+          </Link>
 
-          <NavLinks />
+          <NavLinks pathname={pathname} />
 
           <div
             data-morph
@@ -178,15 +186,16 @@ export function SiteHeader() {
           className="surface-card invisible absolute inset-x-0 top-full mt-2 origin-top scale-[0.98] -translate-y-1 rounded-xl p-2 opacity-0 transition-[opacity,scale,translate,visibility] duration-200 ease-(--ease-out) data-open:visible data-open:translate-y-0 data-open:scale-100 data-open:opacity-100 motion-reduce:translate-y-0 motion-reduce:scale-100 md:hidden"
         >
           <ul className="flex flex-col">
-            {LINKS.map((label) => (
+            {NAV_LINKS.map(({ label, href }) => (
               <li key={label}>
-                <a
-                  href="#"
+                <SmartLink
+                  href={href}
+                  aria-current={isActive(pathname, href) ? "page" : undefined}
                   onClick={() => setMenuOpen(false)}
-                  className="flex min-h-11 items-center rounded-lg px-3 text-[15px] font-medium text-neutral-700 hover:bg-black/5"
+                  className="flex min-h-11 items-center rounded-lg px-3 text-[15px] font-medium text-neutral-700 hover:bg-black/5 aria-[current=page]:bg-sand-100 aria-[current=page]:text-[#303030]"
                 >
                   {label}
-                </a>
+                </SmartLink>
               </li>
             ))}
           </ul>
@@ -198,20 +207,23 @@ export function SiteHeader() {
 
 // Links share one hover chip that glides between them by animating clip-path
 // on a single element, so there's no layout work per hover.
-function NavLinks() {
+function NavLinks({ pathname }: { pathname: string }) {
   const groupRef = useRef<HTMLUListElement>(null);
   const chipRef = useRef<HTMLSpanElement>(null);
 
   function moveChip(target: HTMLElement | null) {
-    const chip = chipRef.current!;
+    const chip = chipRef.current;
+    // pointerleave can fire after a route change has unmounted the list.
+    if (!chip) return;
     if (!target) {
       chip.style.opacity = "0";
       return;
     }
+    // Same 6px corners as the current-page chip (rounded-md).
     const clip = insetWithin(
       groupRef.current!.getBoundingClientRect(),
       target.getBoundingClientRect(),
-    ).replace(/round d+px/, "round 6px");
+    ).replace(/round \d+px/, "round 6px");
     if (chip.style.opacity !== "1") {
       // Arriving from outside: place it without gliding, then fade in.
       chip.style.transition = "none";
@@ -236,17 +248,19 @@ function NavLinks() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-black/[0.05] opacity-0 transition-[opacity,clip-path] duration-[260ms] ease-(--ease-hover)"
       />
-      {LINKS.map((label) => (
+      {NAV_LINKS.map(({ label, href }) => (
         <li key={label}>
-          <a
-            href="#"
+          {/* Paper marks the current page with a sand chip and full-strength text. */}
+          <SmartLink
+            href={href}
+            aria-current={isActive(pathname, href) ? "page" : undefined}
             onPointerEnter={(e) =>
               e.pointerType === "mouse" && moveChip(e.currentTarget)
             }
-            className="relative flex min-h-7 items-center rounded-md px-2.5 text-[13px] leading-5 font-medium text-[#303030a3] transition-colors duration-[240ms] ease-(--ease-hover) hover:text-neutral-900"
+            className="relative flex min-h-7 items-center rounded-md px-2.5 text-[13px] leading-5 font-medium text-[#303030a3] transition-colors duration-[240ms] ease-(--ease-hover) hover:text-neutral-900 aria-[current=page]:bg-sand-100 aria-[current=page]:text-[#303030]"
           >
             {label}
-          </a>
+          </SmartLink>
         </li>
       ))}
     </ul>

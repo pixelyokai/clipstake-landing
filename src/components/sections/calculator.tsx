@@ -12,7 +12,7 @@ export function Calculator() {
       className="defer-render relative isolate overflow-clip bg-clipstake-red-600 py-24 md:py-36"
     >
       <DeferredCalculatorRays targetId="reach-calculator" />
-      <Container className="relative flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-20">
+      <Container className="relative flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
         <div className="flex max-w-[540px] flex-1 flex-col gap-4">
           <h2
             id="calculator-title"

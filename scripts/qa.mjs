@@ -28,7 +28,8 @@ for (const [width, reduce] of [
   });
   await page.setViewport({ width, height: 900 });
   if (reduce) await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
-  await page.goto(url, { waitUntil: "networkidle0" });
+  // networkidle0 never settles on phones while card videos stream.
+  await page.goto(url, { waitUntil: "networkidle2" });
   await page.evaluate(async () => {
     for (let y = 0; y < document.documentElement.scrollHeight; y += 300) {
       window.scrollTo(0, y);

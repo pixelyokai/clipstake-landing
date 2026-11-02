@@ -2,6 +2,7 @@ import { DeferredPixelCanvas } from "@/components/deferred";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
+import { SmartLink } from "@/components/ui/smart-link";
 import { CASE_STUDIES } from "@/content/site";
 
 export function CaseStudies() {
@@ -15,7 +16,7 @@ export function CaseStudies() {
           >
             See how brands scale with Clipstake
           </h2>
-          <ButtonLink variant="ghost" arrow className="-mx-3.5 text-base font-semibold">
+          <ButtonLink href="/case-studies" variant="ghost" arrow className="-mx-3.5 text-base font-semibold">
             All case studies
           </ButtonLink>
         </div>
@@ -23,8 +24,8 @@ export function CaseStudies() {
         <ul className="grid gap-4 md:grid-cols-3">
           {CASE_STUDIES.map((study) => (
             <li key={study.logo.alt}>
-              <a
-                href="#"
+              <SmartLink
+                href={study.href}
                 data-pixel-card
                 className="surface-card group relative isolate flex h-72 flex-col justify-between overflow-clip rounded-lg p-6 transition-[scale] duration-150 ease-(--ease-out) active:scale-[0.99] md:h-80"
               >
@@ -53,7 +54,7 @@ export function CaseStudies() {
                     />
                   </span>
                 </span>
-              </a>
+              </SmartLink>
             </li>
           ))}
         </ul>

@@ -120,14 +120,17 @@ export const API_FEATURES = [
 export const CASE_STUDIES = [
   {
     logo: { src: "/case-studies/solana.webp", alt: "Solana Foundation", width: 289, height: 47 },
+    href: "#",
     body: "Solana is one of the world’s largest and fastest growing blockchains.",
   },
   {
     logo: { src: "/case-studies/jackbit.webp", alt: "JackBit", width: 190, height: 43 },
+    href: "/case-studies/jackbit",
     body: "JackBit is a leading crypto casino and sportsbook.",
   },
   {
     logo: { src: "/case-studies/duel.webp", alt: "Duel", width: 131, height: 49 },
+    href: "#",
     body: "Duel.com is one of the world’s largest and fastest growing crypto casinos.",
   },
 ] as const;
@@ -160,9 +163,47 @@ export const FAQS = [
   },
 ] as const;
 
+// Routes that exist link to their page; everything else stays "#" until its
+// destination is decided.
+export const NAV_LINKS = [
+  { label: "Brand", href: "/brand" },
+  { label: "Creator", href: "/creator" },
+  { label: "Marketplace", href: "#" },
+  { label: "Customers", href: "/case-studies" },
+  { label: "Contact", href: "#" },
+] as const;
+
 export const FOOTER_COLUMNS = [
-  { title: "Product", links: ["Brand", "Creators", "Marketplace", "FAQs"] },
-  { title: "Company", links: ["Contact us", "Case studies", "Brand assets"] },
-  { title: "Download", links: ["App Store", "Play Store"] },
-  { title: "Developers", links: ["Get an API Key", "Status", "Documentation"] },
+  {
+    title: "Product",
+    links: [
+      { label: "Brand", href: "/brand" },
+      { label: "Creators", href: "/creator" },
+      { label: "Marketplace", href: "#" },
+      { label: "FAQs", href: "#" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "Contact us", href: "#" },
+      { label: "Case studies", href: "/case-studies" },
+      { label: "Brand assets", href: "#" },
+    ],
+  },
+  {
+    title: "Download",
+    links: [
+      { label: "App Store", href: "#" },
+      { label: "Play Store", href: "#" },
+    ],
+  },
+  {
+    title: "Developers",
+    links: [
+      { label: "Get an API Key", href: "#" },
+      { label: "Status", href: "#" },
+      { label: "Documentation", href: "#" },
+    ],
+  },
 ] as const;

@@ -830,3 +830,136 @@ html.lenis body {
     #16191d1f 0 -0.5px 0 inset,
     #16191d0a 0 1px 2px -0.5px;
 }
+
+
+/* Creator steps: the four cards rise in left to right as the row scrolls in.
+   Each card's range starts a little later (--i), which reads as a stagger.
+   Scroll-driven, so no JS; reduced motion and older browsers show them still. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rise-in {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 6%) entry calc(55% + var(--i, 0) * 6%);
+    }
+  }
+}
+
+/* Split-hero shader backdrop (Brand fibers, currently hidden), max 1440px
+   wide. A strong mask: nothing at all over the copy column (the left 46%),
+   full strength only between ~66% and ~86%, faded toward the 1440px edges and
+   at the top and bottom. The screenshot hides the rest behind its underlay. */
+.hero-backdrop {
+  opacity: var(--backdrop-opacity, 1);
+  mask-image:
+    linear-gradient(90deg, transparent 46%, #000 66%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 4%, #000 18%, #000 74%, transparent 90%);
+  mask-composite: intersect;
+}
+
+/* CTA prism: faint overall, and weakest behind the centred copy. */
+.prism-mask {
+  opacity: 0.5;
+  mask-image: radial-gradient(ellipse 52% 72% at 50% 50%, rgb(0 0 0 / 0.06) 20%, #000 100%);
+}
+
+/* Creator step illustrations: subtle loops laid over the artwork. Every piece
+   is absolutely placed by the component and animates transform/opacity only.
+   Hidden (not just still) under reduced motion. */
+.step-sweep,
+.step-fill,
+.step-ripple,
+.step-pulse,
+.step-signal {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .step-sweep,
+  .step-fill,
+  .step-ripple,
+  .step-pulse,
+  .step-signal {
+    display: block;
+  }
+}
+/* A soft band of light crossing a card, then a rest. */
+.step-sweep {
+  overflow: hidden;
+}
+.step-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(100deg, #fff0, #ffffffb3 50%, #fff0);
+  translate: -110% 0;
+  animation: step-sweep 3.6s var(--ease-in-out) var(--sweep-delay, 0s) infinite;
+}
+@keyframes step-sweep {
+  0% { translate: -110% 0; }
+  55%, 100% { translate: 240% 0; }
+}
+/* An upload bar filling, holding, then fading for the next one. */
+.step-fill {
+  border-radius: 9999px;
+  background: var(--color-clipstake-red-200);
+  transform-origin: left;
+  animation: step-fill 4s var(--ease-out) infinite;
+}
+@keyframes step-fill {
+  0% { scale: 0 1; opacity: 1; }
+  45% { scale: 1 1; opacity: 1; }
+  80% { scale: 1 1; opacity: 1; }
+  100% { scale: 1 1; opacity: 0; }
+}
+/* A click ring from a cursor tip. */
+.step-ripple {
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-clipstake-red-400);
+  translate: -50% -50%;
+  scale: 0.3;
+  opacity: 0;
+  animation: step-ripple 4s var(--ease-out) var(--ripple-delay, 0s) infinite;
+}
+@keyframes step-ripple {
+  0% { scale: 0.3; opacity: 0.8; }
+  30%, 100% { scale: 1.5; opacity: 0; }
+}
+/* The approval timer breathing. */
+.step-pulse {
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: var(--color-clipstake-red-400);
+  translate: -50% -50%;
+  opacity: 0;
+  animation: step-pulse 2.4s var(--ease-out) infinite;
+}
+@keyframes step-pulse {
+  0% { scale: 0.9; opacity: 0.35; }
+  70%, 100% { scale: 1.7; opacity: 0; }
+}
+/* A spark travelling down the approval line. */
+.step-signal {
+  overflow: hidden;
+}
+.step-signal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#fff0, var(--color-clipstake-red-200) 50%, #fff0);
+  translate: 0 -100%;
+  animation: step-signal 2.4s var(--ease-in-out) infinite;
+}
+@keyframes step-signal {
+  0% { translate: 0 -100%; }
+  60%, 100% { translate: 0 100%; }
+}

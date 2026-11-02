@@ -1,5 +1,6 @@
 // Screenshots the running site at the test widths.
 // Usage: node scripts/shoot.mjs <outDir> [url] [--scroll=<px>] [--widths=360,768,1280,1440] [--full]
+// --full paints the deferred (content-visibility) sections so they show up in the capture.
 import puppeteer from "puppeteer-core";
 
 const args = process.argv.slice(2);
@@ -22,6 +23,7 @@ for (const width of widths) {
   if (reduce) await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
   await page.goto(url, { waitUntil: "networkidle0" });
   if (full) {
+    await page.addStyleTag({ content: ".defer-render{content-visibility:visible!important}" });
     // Walk the page so lazy images load, then return to the top.
     await page.evaluate(async () => {
       for (let y = 0; y < document.body.scrollHeight; y += 600) {

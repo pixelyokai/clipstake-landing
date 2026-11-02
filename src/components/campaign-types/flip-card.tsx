@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/ui/icon";
 import { holdVideo, observeVideo } from "@/lib/video-autoplay";
@@ -66,8 +67,8 @@ export function FlipCard({ title, video, description }: Props) {
         className="absolute inset-0 cursor-pointer rounded-lg transition-[scale] duration-150 ease-(--ease-out) active:scale-[0.99]"
       />
 
-      <a
-        href="#"
+      <Link
+        href="/case-studies"
         inert={!flipped}
         className="flip-link group absolute bottom-6 left-6 inline-flex min-h-10 items-center gap-1 overflow-clip rounded-xl bg-[linear-gradient(in_oklab_180deg,var(--color-clipstake-red-400),var(--color-clipstake-red-600))] px-3.5 text-sm font-medium text-white shadow-[#ffffff33_0_2px_0_inset,#0000001a_0_-1px_0_inset,#0000001a_0_1px_2px] transition-[scale,opacity,translate] ease-(--ease-out) active:scale-[0.97]"
       >
@@ -76,7 +77,7 @@ export function FlipCard({ title, video, description }: Props) {
           name="arrow-right"
           className="transition-[translate] duration-[280ms] ease-(--ease-hover) group-hover:translate-x-[3px]"
         />
-      </a>
+      </Link>
     </div>
   );
 }

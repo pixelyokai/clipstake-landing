@@ -49,3 +49,22 @@ ffmpeg -v error -y -i "$OUT/dome/mosaic.mp4" -frames:v 1 \
   -c:v libwebp -q:v 72 "$OUT/dome/atlas.webp"
 
 du -b "$OUT"/cards/* "$OUT"/dome/*
+
+# JackBit case study clips: Dome clips 1-7 as standalone 9:16 cards, same
+# encoding as the campaign cards (they render up to ~260px wide).
+mkdir -p "$OUT/clips"
+for i in 1 2 3 4 5 6 7; do
+  in="$SRC/Dome/$i.mp4"
+  base="$OUT/clips/$i"
+  vf="fps=30,scale=540:960:force_original_aspect_ratio=increase:flags=lanczos,crop=540:960,setsar=1"
+
+  ffmpeg -v error -y -t "$CARD_SECONDS" -i "$in" -an -vf "$vf" \
+    -c:v libx264 -preset slow -crf 27 -maxrate 1100k -bufsize 2200k \
+    -profile:v high -pix_fmt yuv420p -movflags +faststart "$base.mp4"
+
+  ffmpeg -v error -y -t "$CARD_SECONDS" -i "$in" -an -vf "$vf" \
+    -c:v libsvtav1 -preset 6 -crf 40 -pix_fmt yuv420p "$base.webm"
+
+  ffmpeg -v error -y -i "$in" -frames:v 1 -vf "scale=540:960:force_original_aspect_ratio=increase:flags=lanczos,crop=540:960" \
+    -c:v libaom-av1 -still-picture 1 -crf 32 "$base.avif"
+done

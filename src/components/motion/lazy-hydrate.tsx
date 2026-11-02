@@ -24,8 +24,13 @@ export function lazyHydrate<P extends object>(
 
     useEffect(() => {
       const wrapper = ref.current!;
-      // display:contents has no box, so watch the server-rendered root instead.
-      const target = (wrapper.firstElementChild as HTMLElement | null) ?? wrapper;
+      // A client-side navigation renders the empty fallback, not server HTML:
+      // there's nothing to watch (display:contents has no box), so load now.
+      const target = wrapper.firstElementChild as HTMLElement | null;
+      if (!target) {
+        start();
+        return;
+      }
       const io = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) start();

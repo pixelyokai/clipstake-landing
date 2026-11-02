@@ -89,7 +89,7 @@ export function StepsScroller({ steps }: { steps: Step[] }) {
       onBlur={(e) =>
         !e.currentTarget.contains(e.relatedTarget as Node) && setFocused(false)
       }
-      className="steps mx-auto flex w-full max-w-[1280px] flex-col gap-10 px-4 md:px-10 min-[1200px]:flex-row min-[1200px]:items-center min-[1200px]:gap-20"
+      className="steps mx-auto flex w-full max-w-[1280px] flex-col gap-10 px-4 md:px-10 min-[1200px]:flex-row min-[1200px]:items-center min-[1200px]:justify-between min-[1200px]:gap-20"
     >
       <div className="flex flex-1 flex-col gap-10 min-[1200px]:max-w-[540px] min-[1200px]:gap-12">
         <div className="flex flex-col gap-4">

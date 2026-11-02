@@ -17,7 +17,7 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col items-center gap-4 pt-6 pb-9">
-            <h1 className="text-4xl leading-11 font-semibold tracking-[-0.02em] [filter:drop-shadow(#00000026_0_1px_1px)] sm:text-5xl sm:leading-14">
+            <h1 className="text-4xl leading-11 font-semibold tracking-[-0.02em] text-pretty [filter:drop-shadow(#00000026_0_1px_1px)] sm:text-5xl sm:leading-14">
               <AnimatedWords text="Run clipping campaigns and pay for only verified views" />
             </h1>
             <p className="hero-fade max-w-[548px] text-base tracking-[-0.01em] text-neutral-500">

@@ -3,17 +3,25 @@ import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FAQS } from "@/content/site";
 
-export function Faq() {
+type Props = {
+  title?: string;
+  items?: readonly { q: string; a: string }[];
+  /** Which question starts open. */
+  initial?: number;
+  className?: string;
+};
+
+export function Faq({ title = "FAQs", items = FAQS, initial = 1, className = "pt-10 pb-20" }: Props) {
   return (
-    <section aria-labelledby="faq-title" className="defer-render pt-10 pb-20">
-      <Container className="flex max-w-[1190px] flex-col gap-10 lg:flex-row lg:gap-20">
+    <section aria-labelledby="faq-title" className={`defer-render ${className}`}>
+      <Container className="flex flex-col gap-10 lg:flex-row lg:gap-20">
         <div className="flex max-w-[540px] flex-1 flex-col gap-8">
           <div className="flex flex-col gap-4">
             <h2
               id="faq-title"
               className="text-heading text-3xl leading-9 font-semibold tracking-[-0.01em] md:text-4xl md:leading-11"
             >
-              FAQs
+              {title}
             </h2>
             <p className="max-w-[432px] text-base tracking-[-0.01em] text-neutral-500">
               Discover quick and comprehensive answers to common questions about our platform, services, and
@@ -27,7 +35,7 @@ export function Faq() {
         </div>
 
         <div className="flex flex-1 flex-col">
-          <DeferredFaqAccordion items={FAQS.map((item) => ({ q: item.q, a: item.a }))} initial={1} />
+          <DeferredFaqAccordion items={items.map((item) => ({ q: item.q, a: item.a }))} initial={initial} />
         </div>
       </Container>
     </section>
